@@ -13,11 +13,20 @@ const fruitSchema = new mongoose.Schema({
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
-// const apple = new Fruit({
-//   name: "apple",
-//   rating: 8,
-//   review: "Rasanya manis",
-// });
+const apple = new Fruit({
+  name: "apple",
+  rating: 8,
+  review: "Rasanya manis",
+});
+
+apple.save(function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("berhasil simpan data buah baru");
+  }
+});
+
 const pepaya = new Fruit({
   name: "pepaya",
   rating: 10,
@@ -33,15 +42,6 @@ const mangga = new Fruit({
   rating: 9,
   review: "kita suka mangga",
 });
-
-// apple.save(function (err) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("berhasil simpan data buah baru");
-//   }
-// });
-
 Fruit.insertMany([pepaya, pisang, mangga], function (err) {
   if (err) {
     console.log(err);
